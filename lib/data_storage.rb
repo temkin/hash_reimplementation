@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'ext/inspect'
 
 class DataStorage
@@ -11,7 +13,7 @@ class DataStorage
     if buff
       buff[1] = value
     else
-      self.data << [key, value]
+      data << [key, value]
     end
   end
 
@@ -32,11 +34,9 @@ class DataStorage
     return data.delete_at(index)[1] if index
   end
 
-  def has_key?(key)
+  def key?(key)
     keys.include?(key)
   end
-
-  alias key? has_key?
 
   def length
     data.length

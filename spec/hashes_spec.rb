@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/hash_table'
 require_relative '../lib/data_storage'
 require_relative 'examples/keys'

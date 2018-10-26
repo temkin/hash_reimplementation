@@ -1,0 +1,14 @@
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: 2.4.2
+  Exclude:
+    - 'Gemfile.lock'
+    - '.rubocop.yml'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ext
   module Inspect
     def inspect

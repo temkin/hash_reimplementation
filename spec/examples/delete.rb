@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_examples_for 'delete' do
   it 'delete keys' do
     key1 = 'hello'

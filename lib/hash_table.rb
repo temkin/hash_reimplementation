@@ -1,27 +1,8 @@
+# frozen_string_literal: true
+
 require 'prime'
 require_relative 'ext/inspect'
 require_relative 'data_storage'
-
-# THE GOAL:
-# Implement Data structure HashTable using arrays.
-# Hint: https://launchschool.com/blog/how-the-hash-works-in-ruby
-
-# Minimum Behaviour
-# 1)  t = HashTable.new
-
-# t[1] = 2
-# t[‘hello’] = ‘world’
-
-# puts t
-# => { 1 => 2, ‘hello’ => ‘world’ }
-
-# 2) Add an ability to change hash algorithm.
-# Basic algorithm should be based on :object_id method of any ruby object.
-
-# Need to implement one hash function, taking in maid that we need to have a simple way to replace it in the future.
-
-# Requireements:
-# Just couple classes covered by tests.
 
 class HashTable
   include Ext::Inspect
@@ -37,7 +18,7 @@ class HashTable
   end
 
   def []=(key, value)
-    self.keys << key unless has_key?(key)
+    keys << key unless key?(key)
 
     digest = hash_algorithm(key)
     stored = storage[digest]
@@ -54,13 +35,11 @@ class HashTable
     data_map.nil? ? nil : data_map[key]
   end
 
-  def has_key?(key)
+  def key?(key)
     value_index = hash_algorithm(key)
     return false if storage[value_index].nil?
     storage[value_index].keys.include?(key)
   end
-
-  alias key? has_key?
 
   def length
     keys.length
@@ -104,7 +83,7 @@ class HashTable
     keys.each { |key| other[key] = self[key] }
 
     self.storage = other.storage
-    self.max_size      = new_size
+    self.max_size = new_size
     self
   end
 end
