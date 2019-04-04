@@ -31,7 +31,7 @@ class DataStorage
 
   def delete(key)
     index = data.index { |buff| buff[0].eql?(key) }
-    return data.delete_at(index)[1] if index
+    data.delete_at(index)[1] if index
   end
 
   def key?(key)
